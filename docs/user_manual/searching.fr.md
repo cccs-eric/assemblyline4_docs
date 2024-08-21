@@ -5,12 +5,13 @@ Assemblyline tire avantage des puissantes capacités de recherche pratiquement i
 ## Banque de documents
 Les index d’information sont un des principaux concepts à approfondir. Ils permettent à Assemblyline de dédupliquer la plupart des résultats dans le système, ce qui explique pourquoi l’outil peut s’adapter aussi efficacement. Les recherches dans les champs indexés s’effectuent très rapidement.
 
-- On retrouve 5 index principaux :
-    - Submissions [Soumissions];
-    - Files [Fichiers];
-    - Results [Résultats];
-    - Alerts [Alertes];
-    - Signatures.
+On retrouve 6 index principaux :
+- Alerts [Alertes]
+- Files [Fichiers]
+- Results [Résultats]
+- Retrohunt
+- Signatures
+- Submissions [Soumissions]
 
 Vous pouvez afficher tous les index et les champs indexés connexes après avoir assuré le bon fonctionnement d’Assemblyline en consultant l’aide sous `Help > Search help menu`.
 
