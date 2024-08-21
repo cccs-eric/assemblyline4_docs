@@ -9,12 +9,12 @@ One key concept to understand are the "*indices*" of information. These allow As
 in the system which is a major reason Assemblyline can scale so well. Searching indexed fields is also very fast.
 
 There are 6 primary "*indices*":
-- Alerts
-- Files
-- Results
+- Alert
+- File
+- Result
 - Retrohunt
-- Signatures
-- Submissions
+- Signature
+- Submission
 
 You can view all indices and their indexed fields once you have a working Assemblyline under `Help > Search Help` menu.
 
