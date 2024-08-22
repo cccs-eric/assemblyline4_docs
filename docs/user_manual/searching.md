@@ -1,7 +1,7 @@
 # Searching
 
-Assemblyline offers a search capability within its user interface to search for anything inside its repository.  Using the Lucene query syntax,
-a user can issue search queries that will be handled by [Elasticsearch](https://www.elastic.co/).  The fields available for searching
+Assemblyline offers a search capability within its user interface to search for anything inside its repository.  Using the search widget,
+a user can issue a Lucune-based search query that will be handled internally by [Elasticsearch](https://www.elastic.co/).  The fields available for searching
 are dictated by several Object Data Models (aka ODMs) that are captured via Elastic indices.
 
 Elastic indices allow Assemblyline to deduplicate most of the results in the system which is a major reason Assemblyline can scale so well.
