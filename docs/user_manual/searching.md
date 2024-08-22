@@ -1,12 +1,11 @@
 # Searching
 
-Assemblyline leverages the powerful capabilities of [Elasticsearch](https://www.elastic.co/) which make it possible to
-search for almost anything.
+Assemblyline offers a search capability within its user interface to search for anything inside its repository.  Using the Lucene query syntax,
+a user can issue search queries that will be handled by [Elasticsearch](https://www.elastic.co/).  The fields available for searching
+are dictated by several Object Data Models (aka ODMs) that are captured via Elastic indices.
 
-## Document store
-
-One key concept to understand are the "*indices*" of information. These allow Assemblyline to deduplicate most of the results
-in the system which is a major reason Assemblyline can scale so well. Searching indexed fields is also very fast.
+Elastic indices allow Assemblyline to deduplicate most of the results in the system which is a major reason Assemblyline can scale so well.
+Searching indexed fields is also very fast.
 
 There are 6 primary "*indices*":
 - Alert
