@@ -39,7 +39,7 @@ This schema serves as a technical blueprint for cybersecurity professionals to n
 
 | Field | Type | Description | Required | Default |
 | :--- | :--- | :--- | :--- | :--- |
-| attrib | List [Keyword] | **TODO: modified, ask for verification** Attribution tags indicating possible malware family, potential threat actors or campaigns associated with the alert. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
+| attrib | List [Keyword] | A list of attribution tags that provide context by suggesting associations with known malware families, suspected threat actors, or ongoing campaigns. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
 | av | List [Keyword] | List of antivirus signatures that matched the file associated with the alert. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
 | behavior | List [Keyword] | Descriptions of behaviors exhibited by the analyzed file or artifact that led to the alert. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
 | detailed | [DetailedResults](/assemblyline4_docs/odm/models/alert/#detailedresults) | Provides a more detailed breakdown of the analysis results. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `None` |
@@ -65,7 +65,7 @@ This schema serves as a technical blueprint for cybersecurity professionals to n
 | :--- | :--- | :--- | :--- | :--- |
 | attack_pattern | List [[DetailedItem](/assemblyline4_docs/odm/models/alert/#detaileditem)] | Detailed information on MITRE ATT&CK® framework patterns identified in the analysis. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
 | attack_category | List [[DetailedItem](/assemblyline4_docs/odm/models/alert/#detaileditem)] | Detailed information on MITRE ATT&CK® framework categories associated with the alert.  | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
-| attrib | List [[DetailedItem](/assemblyline4_docs/odm/models/alert/#detaileditem)] | **TODO: check back after attrib verification**Detailed attribution information suggesting possible malware family, potential threat actors or campaigns. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
+| attrib | List [[DetailedItem](/assemblyline4_docs/odm/models/alert/#detaileditem)] | Detailed attribution information that provide context by suggesting associations with known malware families, suspected threat actors, or ongoing campaigns. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
 | av | List [[DetailedItem](/assemblyline4_docs/odm/models/alert/#detaileditem)] | Detailed information on antivirus signature matches. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
 | behavior | List [[DetailedItem](/assemblyline4_docs/odm/models/alert/#detaileditem)] | Detailed descriptions of the behaviors exhibited by the analyzed file or artifact that led to the alert. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
 | domain | List [[DetailedItem](/assemblyline4_docs/odm/models/alert/#detaileditem)] | Detailed domain information related to the alert. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |

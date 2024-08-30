@@ -21,17 +21,17 @@ You can view all indices and their indexed fields once you have a working Assemb
 
 When you search for something in the Search Bar at the top of the UI
 
-![Search bar atop UI](./images/search_bar.png){: .center }
+![A search bar interface, part of the Assemblyline user interface. The search bar is located on a dark background and features a magnifying glass icon on the left side, indicating its function for searching. To the right of the search bar, there are three icons: one for keyboard shortcuts (CTRL+K), another for notifications with a number “12” suggesting there are 12 notifications, and an icon representing the avatar of the logged in user.](./images/search_bar.png){: .center }
 
 or on the generic Search page
 
-![Generic Search page](./images/search_view.png)
+![A dark-themed search page interface with the word ‘Search’ at the top in white text. Below it, there is a search bar with rounded corners and lighter grey shade. The placeholder text inside the search bar reads ‘Search all indexes…’ in grey. On the right side of the search bar, there is a magnifying glass icon for search and an ‘x’ icon to clear the input field.](./images/search_view.png)
 
 it will run your query in all the indices and return any matching results.
 
 The fact that there are 6 separate indices is obvious when you make a search on one of the search bars mentioned above, as the results appear per index:
 
-![Searching across indices](./images/searching_across_indices.png)
+![A screenshot of a search interface with the word ‘blah’ typed into the search bar. Below the search bar are tabs labeled SUBMISSION, FILE, RESULT, SIGNATURE, ALERT, and RETROHUNT representing various indices, all showing (0) entries. A message box below the tabs states ‘No submissions found!’ and another line reads ‘The query that you ran did not return any results.](./images/searching_across_indices.png)
 
 
 !!! tip "You must limit your search criteria to a single index; in other words, you cannot do JOIN queries with information present in two or more indices."
