@@ -21,7 +21,7 @@ This schema serves as a technical blueprint for cybersecurity professionals to n
 | label | List [Keyword] | Labels assigned to the alert for categorization and filtering. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `[]` |
 | metadata | FlattenedObject | Additional metadata provided with the file at the time of submission. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `{}` |
 | owner | Keyword | **TODO:verify** The username or system component that owns or is responsible for the alert. | <div style="width:100px">:material-minus-box-outline: Optional</div> | `None` |
-| priority | Enum | Indicates the importance level assigned to the alert.  Possible values are (case-sensitive): `CRITICAL`, `HIGH`, `LOW`, `MEDIUM` or None | <div style="width:100px">:material-minus-box-outline: Optional</div> | `None` |
+| priority | Enum | Indicates the importance level assigned to the alert.  Possible values are (case-sensitive): `CRITICAL`, `HIGH`, `MEDIUM`, `LOW` or None | <div style="width:100px">:material-minus-box-outline: Optional</div> | `None` |
 | reporting_ts | Date | Timestamp when the alert was created. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `None` |
 | submission_relations | List [[Relationship](/assemblyline4_docs/odm/models/alert/#relationship)] | Describes the hierarchical relationships between submissions that contributed to this alert. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `None` |
 | sid | UUID | Identifier for the submission associated with this alert. | <div style="width:100px">:material-checkbox-marked-outline: Yes</div> | `None` |
