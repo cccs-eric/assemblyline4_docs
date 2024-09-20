@@ -17,6 +17,16 @@ There are 6 primary "*indices*":
 
 You can view all indices and their indexed fields once you have a working Assemblyline under `Help > Search Help` menu.
 
+An important general concept with AssemblyLine is its scoring scheme.  When you are looking for items with a certain threat level,
+you need to look for its score.  The scores are usually organized like the following:
+```
+-1000: safe
+0 - 299: informative
+300 - 699: suspicious
+700 - 999: highly suspicious
+>= 1000: malicious
+```
+
 ## Searching behaviours and limitations
 
 When you search for something in the Search Bar at the top of the UI
