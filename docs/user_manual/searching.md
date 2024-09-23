@@ -1,10 +1,10 @@
 # Searching
 
 Assemblyline offers a search capability within its user interface to search for anything inside its repository.  Using the search widget,
-a user can issue a Lucene-based search query string that will be handled by the internal search engine.  The fields available for searching
-are dictated by several Object Data Models (aka ODMs) that are captured via Elastic indices.
+a user can submit a search query that follows the Lucene query syntax that will be handled by the search engine.  The fields available for searching
+are dictated by several Object Data Models (aka ODMs) that are captured via Elasticsearch indices.
 
-Elastic indices allow Assemblyline to deduplicate most of the results in the system which is a major reason Assemblyline can scale so well.
+Elasticsearch indices allow Assemblyline to deduplicate most of the results in the system which is a major reason Assemblyline can scale so well.
 Searching indexed fields is also very fast.
 
 There are 6 primary "*indices*":
@@ -17,15 +17,6 @@ There are 6 primary "*indices*":
 
 You can view all indices and their indexed fields once you have a working Assemblyline under `Help > Search Help` menu.
 
-An important general concept with AssemblyLine is its scoring scheme.  When you are looking for items with a certain threat level,
-you need to look for its score.  The scores are usually organized like the following:
-```
--1000: safe
-0 - 299: informative
-300 - 699: suspicious
-700 - 999: highly suspicious
->= 1000: malicious
-```
 
 ## Searching behaviours and limitations
 

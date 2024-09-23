@@ -1,4 +1,30 @@
-# Assemblyline Verdicts
+# Understanding Assemblyline Verdicts
+
+Assemblyline provides a mechanism to assess the potential risk of files by assigning them a score based on their behavior, characteristics, and other analytics performed by its services. These scores are then translated into [verdicts](../../odm/models/config/#verdicts), which are human-friendly labels that summarize the risk level associated with a file. Verdicts help users quickly understand the security implications of the analysis results.
+
+Assemblyline categorizes files into distinct verdicts based on their scores, making it easier for users to identify potential threats. Each verdict represents a range of scores and indicates the level of suspicion or threat associated with the file. The following are the standard verdicts used in Assemblyline:
+
+- **Safe**: This verdict is given to files that are deemed non-threatening. Files that exhibit no malicious characteristics or behaviors and are well-known to be benign fall into this category.
+- **Informative**: Files that receive this verdict do not pose a direct threat but contain information that may be of interest. This could include files that exhibit unusual but non-malicious characteristics or are related to known software with vulnerabilities.
+- **Suspicious**: When a file is labeled as suspicious, it means that it exhibits behaviors or characteristics that could potentially be harmful, but there is not enough conclusive evidence to label it as highly suspicious or malicious.
+- **Highly Suspicious**: This verdict is reserved for files that show strong indicators of being a threat but fall just short of the threshold for being definitively classified as malicious. Such files warrant closer examination and caution.
+- **Malicious**: Files that score within this range are considered to be harmful and likely to cause damage or unauthorized access. They exhibit clear malicious intent and should be treated with the highest priority for mitigation and containment.
+
+
+For a user to understand what score correlates with each verdict, the following score thresholds are used:
+
+- **Safe**: A score of -1000.
+- **Informative**: Scores ranging from 0 to 299.
+- **Suspicious**: Scores between 300 and 699.
+- **Highly Suspicious**: Scores from 700 to 999.
+- **Malicious**: Scores of 1000 or above.
+
+
+When you need to search for files or submissions within Assemblyline that have been assigned a specific verdict, you should filter your search based on the score ranges associated with each verdict. For example, if you are looking for files that have been deemed "Highly Suspicious," you would search for files with scores from 700 to 999.
+
+By using these score ranges, users can effectively narrow down their search to focus on files that meet their criteria for further analysis or action. Understanding the relationship between scores and verdicts is crucial for effective threat management and prioritization within Assemblyline.
+
+## Before
 
 As per the [Assemblyline documentation](../../odm/models/config/#verdicts), verdicts are the human-readable
 interpretation of the score that a file received upon analysis by a service.
@@ -12,6 +38,7 @@ By default, the following score ranges are applied to certain verdicts:
 700 - 999: highly suspicious
 >= 1000: malicious
 ```
+
 
 ## How the scores are calculated
 
