@@ -54,7 +54,7 @@ This limitation can be mitigated by using the [Assemblyline Client](../../integr
 
 To familiarize yourself with the indices, use the "*Find related results*" option from the tags dropdown menu.
 
-![Searching](./images/magnifier.png){: .center }
+![Screenshot showing a dropdown menu with options including 'Copy to clipboard', 'Find related results', 'Toggle highlight', and 'Add to safelist'. The 'Find related results' option is highlighted. The dropdown menu can be accessed from right-clicking tags found in a submission.](./images/magnifier.png){: .center }
 
 For example, clicking it on the `av.virus_name` tag (`HEUR/Macro.Downloader.MRAA.Gen`) will generate the following query:
 ```ruby
