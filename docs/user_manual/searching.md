@@ -1,56 +1,70 @@
-# Searching
+# Searching in Assemblyline
 
-Assemblyline leverages the powerful capabilities of [Elasticsearch](https://www.elastic.co/) which make it possible to
-search for almost anything.
+Assemblyline provides robust search capabilities within its user interface, allowing users to search for anything stored in its indices. By using the search widget, users can submit queries following the Lucene query syntax, which are then handled by the search engine. The fields available for searching are determined by several Object Data Models (ODMs) captured via Elasticsearch indices.
 
-## Document store
+## Understanding Indices
 
-One key concept to understand are the "*indices*" of information. These allow Assemblyline to deduplicate most of the results
-in the system which is a major reason Assemblyline can scale so well. Searching indexed fields is also very fast.
+Elasticsearch indices enable Assemblyline to deduplicate most of the results in the system, which significantly enhances its scalability. Searching through indexed fields is also remarkably fast.
 
-- There are 6 primary "*indices*"
-    - Submissions
-    - Files
-    - Results
-    - Alerts
-    - Signatures
-    - Retrohunt
+Assemblyline has six primary indices:
 
-You can view all indices and their indexed fields once you have a working Assemblyline under `Help > Search Help` menu.
+- **Alert**
+- **File**
+- **Result**
+- **Retrohunt**
+- **Signature**
+- **Submission**
 
-## Searching behaviours and limitations
+You can view all indices and their indexed fields from the `Help > Search Help` menu in your Assemblyline installation.
 
-When you search for something in the Search Bar at the top of the UI
+## Using the Search Interface
 
-![Search bar atop UI](./images/search_bar.png){: .center }
+### Search Bar
 
-or on the generic Search page
+The search bar, located at the top of the user interface, lets you perform searches across all indices.
 
-![Generic Search page](./images/search_view.png)
+![A search bar interface, part of the Assemblyline user interface. The search bar is located on a dark background and features a magnifying glass icon on the left side, indicating its function for searching. To the right of the search bar, there are three icons: one for keyboard shortcuts (CTRL+K), another for notifications with a number “12” suggesting there are 12 notifications, and an icon representing the avatar of the logged in user.](./images/search_bar.png){: .center }
 
-it will run your query in all the indices and return any matching results.
+### Search Page
 
-The fact that there are 6 separate indices is obvious when you make a search on one of the search bars mentioned above, as the results appear per index:
+Additionally, you can perform searches using the generic Search page.
 
-![Searching across indices](./images/searching_across_indices.png)
+![A dark-themed search page interface with the word ‘Search’ at the top in white text. Below it, there is a search bar with rounded corners and lighter grey shade. The placeholder text inside the search bar reads ‘Search all indexes…’ in grey. On the right side of the search bar, there is a magnifying glass icon for search and an ‘x’ icon to clear the input field.](./images/search_view.png)
 
+### Search Results
 
-!!! tip "You must limit your search criteria to a single index; in other words, you cannot do JOIN queries with information present in two or more indices."
+Search results will be displayed across the different indices. The results are categorized by:
 
-This limitation can be worked around by using the [Assemblyline Client](../../integration/python/) by performing queries on one index and then enriching or narrowing your search by searching for elements in another index.
+- **SUBMISSION**
+- **FILE**
+- **RESULT**
+- **SIGNATURE**
+- **ALERT**
+- **RETROHUNT**
 
-## Search examples
+![A screenshot of a search interface with the word ‘blah’ typed into the search bar. Below the search bar are tabs labeled SUBMISSION, FILE, RESULT, SIGNATURE, ALERT, and RETROHUNT representing various indices, all showing (0) entries. A message box below the tabs states ‘No submissions found!’ and another line reads ‘The query that you ran did not return any results.](./images/searching_across_indices.png)
 
-One quick way to get familiar with search indices is to use the "*Find related results*" item from the tags dropdown menu.
+!!! tip "You must limit your search criteria to a single index. Searching across multiple indices simultaneously (i.e., JOIN queries) is not supported."
+
+This limitation can be mitigated by using the [Assemblyline Client](../../integration/python/) to perform queries on one index and then refine or enrich your search by querying another index.
+
+## Search Examples
+
+### Basic Searches
+
+To familiarize yourself with the indices, use the "*Find related results*" option from the tags dropdown menu.
 
 ![Searching](./images/magnifier.png){: .center }
 
-Clicking it on the `av.virus_name` tag (`HEUR/Macro.Downloader.MRAA.Gen`) will build the following query:
+For example, clicking it on the `av.virus_name` tag (`HEUR/Macro.Downloader.MRAA.Gen`) will generate the following query:
 ```ruby
 result.sections.tags.av.virus_name:"HEUR/Macro.Downloader.MRAA.Gen"
 ```
 
-You can also build more complex searches by leveraging the [full Lucene query syntax](https://www.elastic.co/guide/en/kibana/current/lucene-query.html). Here are some other examples:
+### Advanced Searches
+
+Harness the full power of the [Lucene query syntax](https://www.elastic.co/guide/en/kibana/current/lucene-query.html) for more complex searches. Here are a few examples:
+
 ```ruby
 # Find every result where the ViperMonkey service extracted the IP 10.10.10.10
 result.sections.tags.network.static.ip:"10.10.10.10" AND response.service_name:ViperMonkey
@@ -61,15 +75,16 @@ max_score:[2000 TO *] AND times.submitted:[now-2d TO now]
 # Find all anti-virus results with Emotet in the signature name
 result.sections.tags.av.virus_name:*Emotet*
 ```
-The system supports a wide range of search parameter such as wildcards, ranges and regex. The full syntax range can be found under ```Help > Search Help```
+Assemblyline supports various search parameters, including wildcards, ranges, and regex. Refer to `Help > Search Help` for comprehensive syntax.
 
-Search queries can also be used with the [Assemblyline Client](../../integration/python) to build powerful tradecraft which can run automatically as new files get scanned by the system.
+Search queries can also be used with the [Assemblyline Client](../../integration/python) to automate complex tradecraft as new files are processed by the system.
 
-## Autofill
-There are a lot of fields per index that you can query for, so exploring the "autofill" options is helpful. To do so, head to an index-specific search page, like "Result" (`/search/result`), and type something. The available fields that you can query for should pop up:
+## Autofill Feature
+
+Given the wide range of searchable fields per index, the "autofill" feature can assist in constructing queries. To use autofill, navigate to an index-specific search page, such as "Result" (`/search/result`), and start typing. Autofill will suggest available fields:
 
 ![Autofill options on the Result search page](./images/autofill_options.png)
 
-If you want to query all submissions that are TLP:CLEAR and have a service that scored greater than 500, the Result index is where you would want to search because that is where the service result data lives:
+For instance, if you wish to query all submissions marked as `TLP:CLEAR` and containing a service that scored greater than 500, you should search within the Result index:
 
 ![Example query result](./images/example_query_result.png)
