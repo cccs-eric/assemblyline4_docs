@@ -52,9 +52,9 @@ This limitation can be mitigated by using the [Assemblyline Client](../../integr
 
 ### Basic Searches
 
-To familiarize yourself with the indices, use the "*Find related results*" option from the tags dropdown menu.
+To familiarize yourself with the indices, use the "Find related results" option from the tags dropdown menu, accessible by right-clicking any tag found throughout Assemblyline.
 
-![Searching](./images/magnifier.png){: .center }
+![Screenshot showing a dropdown menu with options including 'Copy to clipboard', 'Find related results', 'Toggle highlight', and 'Add to safelist'. The 'Find related results' option is highlighted. The dropdown menu can be accessed from right-clicking any tag found throughout Assemblyline.](./images/magnifier.png){: .center }
 
 For example, clicking it on the `av.virus_name` tag (`HEUR/Macro.Downloader.MRAA.Gen`) will generate the following query:
 ```ruby
@@ -83,8 +83,8 @@ Search queries can also be used with the [Assemblyline Client](../../integration
 
 Given the wide range of searchable fields per index, the "autofill" feature can assist in constructing queries. To use autofill, navigate to an index-specific search page, such as "Result" (`/search/result`), and start typing. Autofill will suggest available fields:
 
-![Autofill options on the Result search page](./images/autofill_options.png)
+![Screenshot of the autofill feature in the Assemblyline application, displaying a dropdown list of suggested search fields that appear when typing 'a' in the search bar. The suggestions include options like 'archive_ts,' 'classification,' 'created,' 'response.extracted.allow_dynamic_recursion,' 'response.extracted.classification,' 'response.extracted.description,' and 'response.extracted.is_section_image.'](./images/autofill_options.png)
 
-For instance, if you wish to query all submissions marked as `TLP:CLEAR` and containing a service that scored greater than 500, you should search within the Result index:
+For instance, if you wish to query all submissions marked as `TLP:CLEAR` and containing a service that scored greater than 500, you should search within the `Result` index:
 
-![Example query result](./images/example_query_result.png)
+![Screenshot of the search results page in the Assemblyline application showing a query for classification:TLP:CLEAR AND result.score:>500. The results include a list of matching entries with columns for Created Time, Verdict, SHA256, File Type, Service, and Classification. Two results are displayed, both marked as 'Malicious' with TLP:CLEAR classification. One entry is a 'archive/zip' file type processed by the 'Extract' service, created 4 days ago, and the other is a 'text/plain' file type processed by the 'NetRep' service, created 12 days ago.](./images/example_query_result.png)
