@@ -153,7 +153,7 @@ This tab allows you to view and modify general information about the service.
 
 ![Service detail general](./images/service_detail_gen.png)
 
-Fields You Can Modify:
+Here, you can adjust various general settings:
 
 - **Version**: Change the service version.
 - **Description**: Edit the service description.
@@ -170,11 +170,11 @@ Fields You Can Modify:
 
 ### Container tab
 
-The "*Container*" tab will show information about containers used by the service.
+The "*Container*" tab provides information about the containers used by the service.
 
 ![Service detail container](./images/service_detail_container.png)
 
-In this tab, you will be able to:
+Here, you can:
 
 * Change the update channel (Development/Stable)
 * Change the main service container
@@ -182,11 +182,11 @@ In this tab, you will be able to:
 
 #### Main service container
 
-The main service container is the container containing and running the service code. By clicking the main service container, you will be able to modify the parameters used to launch that container.
+The main service container is the container housing and running the service code. By clicking on the main service container, you can modify the parameters used to launch it.
 
 ![Service detail container edit](./images/service_detail_container_edit.png)
 
-The list of parameters you will be able to modify is the following:
+You can modify the following parameters:
 
 * Container image name
 * Type of container registry
@@ -197,7 +197,7 @@ The list of parameters you will be able to modify is the following:
 * Environment variables set before loading the container
 
 !!! tip
-    Check the [docker config](../../developer_manual/services/advanced/service_manifest/#docker-config) block from the [service manifest](../../developer_manual/services/advanced/service_manifest/) documentation to know more about the different field you can modify in the docker container configuration.
+    Check the [docker config](../../developer_manual/services/advanced/service_manifest/#docker-config) block in the [service manifest](../../developer_manual/services/advanced/service_manifest/) documentation for more information on the different fields you can modify in the docker container configuration.
 
 #### Dependency containers
 
