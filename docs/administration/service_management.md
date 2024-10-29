@@ -120,10 +120,12 @@ The **External** column indicates whether the service sends data outside of Asse
 
 **Mode**
 
-The **Mode** column specifies how the service runs, providing information on whether it:
+The **Mode** column specifies how the service operates, providing key information on its interaction with Assemblyline's core infrastructure. Here are the possible modes:
 
-- **Runs in Privileged Mode**: This means the service has elevated permissions, which may be necessary for certain types of analysis.
-- **Uses Service Server**: Indicates the service relies on a server-based backend for processing.
+- **Uses Service Server**: These services utilize the Service Server, which isolates them from the core infrastructure. The Service Server provides APIs for task handling, result publishing, file downloading, and accessing the system safelist, ensuring that services have all necessary functionalities while remaining unaware of the underlying infrastructure.
+- **Runs in Privileged Mode**: Services operating in this mode bypass the Service Server, directly pulling tasks from Redis. They can save analysis results into the Datastore and store embedded and supplementary files directly into the Filestore. This results in faster processing due to the direct access to core components.
+
+For more detailed information, please refer to the [full documentation](../overview/architecture.md#service-server).
 
 **Classification**
 
