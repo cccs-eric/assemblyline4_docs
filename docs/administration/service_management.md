@@ -168,112 +168,108 @@ Here, you can adjust various general settings:
 !!! tip
     Refer to the [service manifest](../../developer_manual/services/advanced/service_manifest/) documentation for more detailed information about these fields.
 
-### Container tab
+### Container Tab
 
-The "*Container*" tab provides information about the containers used by the service.
+The *Container* tab provides comprehensive information about the containers your service utilizes.
 
 ![Service detail container](./images/service_detail_container.png)
 
-Here, you can:
+Within this tab, you can adjust the following settings:
 
-* Change the update channel (Development/Stable)
-* Change the main service container
-* Add/modify/remove dependency containers
+- **Update Channel**: Select between Development or Stable channels for updates.
+- **Main Service Container**: Modify the primary container that executes the service.
+- **Dependency Containers**: Add, modify, or remove supporting containers.
 
-#### Main service container
+#### Main Service Container
 
 The main service container is the container housing and running the service code. By clicking on the main service container, you can modify the parameters used to launch it.
 
 ![Service detail container edit](./images/service_detail_container_edit.png)
 
-You can modify the following parameters:
+You can adjust the following settings:
 
-* Container image name
-* Type of container registry
-* Resources limits (CPU/RAM)
-* Container registry credentials (username/password)
-* Command executed in the container
-* Allow internet access to the container
-* Environment variables set before loading the container
+- **Container Image Name**: Set the name of the container image.
+- **Container Registry Type**: Specify the type of container registry.
+- **Resource Limits**: Define CPU and RAM limits.
+- **Container Registry Credentials**: Provide registry credentials (username/password).
+- **Command Execution**: Change the command executed within the container.
+- **Internet Access**: Enable or disable internet access for the container.
+- **Environment Variables**: Set necessary environment variables before launching the container.
 
 !!! tip
-    Check the [docker config](../../developer_manual/services/advanced/service_manifest/#docker-config) block in the [service manifest](../../developer_manual/services/advanced/service_manifest/) documentation for more information on the different fields you can modify in the docker container configuration.
+    For more details on configuring the Docker block, refer to the [docker config](../../developer_manual/services/advanced/service_manifest/#docker-config) section in the service manifest documentation.
 
-#### Dependency containers
+#### Dependency Containers
 
-Dependency containers are containers use to support the main services in some ways. Either by offering an external place to store data (A database for example) or to perform service updates.
+Dependency containers support the main service by providing external resources (like a database) or facilitating updates. These containers are shared among multiple service instances.
 
-A service can have multiple dependency containers and these containers are shared between the multiple instances of the service that can be loaded in the system i.e., there will only be one instance of each dependency container.
-
-By either click the "*Add Dependency*" button or clicking a dependency container, you will be able to either add or modify container dependencies of the current service.
+To add or modify a dependency container, click "Add Dependency" or select an existing container.
 
 ![Service detail dependency edit](./images/service_detail_dependency_edit.png)
 
-The dependency container configuration window look almost the same and let you modify the same values as the [main service container](#main-service-container) window. There is however an added parameter that you can configure to give the container persistent storage.
+The dependency container configuration window allows you to modify similar settings as the main service container, with an added option for persistent storage.
 
 !!! tip
-    Check the [persistent volume](../../developer_manual/services/advanced/service_manifest/#persistent-volume) block from the [service manifest](../../developer_manual/services/advanced/service_manifest/) documentation to know more about the different fields to configure to get persistent storage in a dependency container.
+    Refer to the [persistent volume](../../developer_manual/services/advanced/service_manifest/#persistent-volume) section in the service manifest documentation to learn more about configuring persistent storage for dependency containers.
 
-### Updates tab
+### Updates Tab
 
-The "*Updates*" tab shows information about how the service updates itself or its signatures.
+The *Updates* tab displays information about the service's self-update mechanism or signature updates.
 
 ![Service detail updates](./images/service_detail_updates.png)
 
 !!! warning
-    This tab is optional and will not be shown for all service. Only services that define and [update config](../../developer_manual/services/advanced/service_manifest/#update-config) block in their [service manifest](../../developer_manual/services/advanced/service_manifest/) will have that tab shown.
+    This tab appears only if the service defines an [update config](../../developer_manual/services/advanced/service_manifest/#update-config) block in its service manifest.
 
-In this tab, you will be able to view/modify the following information:
+In this tab, you can view and modify:
 
-* Interval at which the service updates
-* If the service generates signatures in the system or not
-* If the service needs to wait for a successful update to start instances of itself
-* The various sources where the service pulls its updates from
+- **Update Interval**: Set the frequency of updates.
+- **Signature Generation**: Indicate whether the service generates signatures.
+- **Startup Dependency**: Specify if the service must wait for a successful update before starting instances.
+- **Update Sources**: List the sources from which the service pulls its updates.
 
 !!! tip
-    Checkout the [Modifying sources](../../administration/source_management/#modifying-sources) documentation to know more about the different values you can change in the signature sources.
+    For more information on modifying signature sources, refer to the [Modifying sources](../../administration/source_management/#modifying-sources) documentation.
 
-### Parameters tab
+### Parameters Tab
 
-Finally, the "*Parameters*" tab will let you view and customize the different parameters the service can take in.
+The *Parameters* tab allows customization of various service parameters.
 
 ![Service detail parameters](./images/service_detail_parameters.png)
 
-Service parameters are split into two categories:
+Parameters are divided into two categories:
 
-* User specified parameters
-* Service variables
+- **User-Specified Parameters**
+- **Service Variables**
 
-#### User specified parameters
+#### User-Specified Parameters
 
-User specified parameters are parameters that a user can modify for each specific submission it does in the system.
+These parameters can be adjusted by users for each specific submission in the system. They often include:
 
-They are often but not exclusively used for things like:
-
-* Turning on/off features of a service
-* Specifying a password used during a submission
-* Limit what the service can and cannot do
-* Extract more or less files when a service runs
+- Feature toggles for the service
+- Passwords for specific submissions
+- Limits on the service's actions
+- Extraction sensitivity
 
 !!! tip
-    When these parameters are defined for a service, they will be shown in the [submission options](../../user_manual/submitting_file/#options) available for the user at submission time.
+    When defined, these parameters appear in the [submission options](../../user_manual/submitting_file/#options) available to the user during submission.
 
-#### Service variables
+#### Service Variables
 
-Service variable are configuration parameters only shared between the service and your deployment. They are used to help the service configure itself to run well in your environment.
+Service variables are configuration parameters specific to your deployment, aiding the service in running effectively. They often include:
 
-Service variables are often but not exclusively things like:
-
-* URLs to connect to external services
-* Credentials use to connect to external services
-* List of default values used in a service
-* Configuration parameter that will limit or increase scanning capabilities of a service
+- URLs for external services
+- Credentials for external connections
+- Default values used by the service
+- Scanning capabilities configuration
 
 ##### OCR Configuration
-Some services may perform OCR analysis on images given/generated during analysis. Because of this, you're able to override/customize the default OCR terms from the [service base](https://github.com/CybercentreCanada/assemblyline-v4-service/blob/master/assemblyline_v4_service/common/ocr.py) using the `ocr` key in the `config` block of the service manifest.
+
+Certain services conduct OCR (Optical Character Recognition) analysis on images either found in submissions or generated during the analysis. You can override or customize the default OCR terms defined in the [service base](https://github.com/CybercentreCanada/assemblyline-v4-service/blob/master/assemblyline_v4_service/common/ocr.py) by using the `ocr` key within the `config` block of the service manifest.
 
 ###### Simple Term Override (Legacy)
-Let's say, I want to use a custom set of terms for `ransomware` detection. Then I can set the following:
+
+To use a custom set of terms for `ransomware` detection, you can configure the following in your service manifest:
 
 ```yaml
 config:
@@ -281,10 +277,11 @@ config:
         ransomware: ['bad1', 'bad2', ...]
 ```
 
-This will cause the service to **only** use the terms I've specified when looking for `ransomware` terms. This is still subject to the hit threshold defined in the service base.
+This configuration will instruct the service to **only** use the specified terms for `ransomware` detection, adhering to the default hit threshold as defined in the service base.
 
 ###### Advanced Term Override
-Let's say, I want to use a custom set of terms for `ransomware` detection and I want to set the hit threshold to `1` instead of `2` (default). Then I can set the following:
+
+If you need to use custom terms for `ransomware` detection and set a specific hit threshold, you can configure the following:
 
 ```yaml
 config:
@@ -294,10 +291,11 @@ config:
             threshold: 1
 ```
 
-This will cause the service to **only** use the terms I've specified when looking for `ransomware` terms and is subject to the hit threshold I've defined.
+This setup not only specifies custom terms but also defines a threshold value. The service will use **only** these terms for `ransomware` detection, with the detection threshold you have set.
 
 ###### Term Inclusion/Exclusion
-Let's say, I want to add/remove a set of terms from the default set for `ransomware` detection. Then I can set the following:
+
+To modify the default set of terms by adding or excluding certain terms for `ransomware` detection, use the following configuration:
 
 ```yaml
 config:
@@ -307,4 +305,4 @@ config:
             exclude: ['bank account']
 ```
 
-This will cause the service to add the terms listed in `include` and remove the terms in `exclude` when looking for `ransomware` terms in OCR detection with the default set.
+This configuration allows the service to augment the default terms by including the terms specified in `include` and excluding those in `exclude`. The service will employ this adjusted set for OCR-based `ransomware` detection.
