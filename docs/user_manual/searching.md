@@ -14,7 +14,7 @@ Assemblyline has six primary indices:
 
 - **[Result](../odm/models/result.md)**: Allows users to search for specific service results, enabling the examination of the analysis performed by various services, including detailed scores, sections, and response data.
 
-- **[Retrohunt](../odm/models/retrohunt.md)**: Allows users to review and analyze the results of retrospective threat hunts, where Yara rules have been applied to previously submitted samples. This facilitates the identification of new threats based on updated threat intelligence.
+- **[Retrohunt](../odm/models/retrohunt.md)**: Allows users to apply Yara rules to previously submitted samples and review the results of these retrospective threat hunts. This facilitates the identification and analysis of new threats based on updated threat intelligence.
 
 - **[Signature](../odm/models/signature.md)**: Allows users to search for service-specific signatures (e.g., YARA rules) and any relevant metadata, including source, statistics, classification, and status.
 
